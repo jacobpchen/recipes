@@ -7,6 +7,7 @@ import Recipes from './components/Recipes'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import Recipe from './components/Recipe'
+import Category from './components/Category'
 
 
 function App() {
@@ -29,6 +30,13 @@ function App() {
     />
   )
 
+  const CategoriesComponent = () =>
+  (
+    <Category
+      recipes={recipes}
+    />
+  )
+
   return (
 
 
@@ -38,6 +46,7 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/recipes' render={RecipesComponent} />
         <Route exact path="/recipes/:id" component={Recipe} />
+        <Route path="/categories/:id" render={CategoriesComponent} exact />
       </Switch>
     </Router>
 
