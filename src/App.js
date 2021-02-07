@@ -7,7 +7,6 @@ import Recipes from './components/Recipes'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import Recipe from './components/Recipe'
-import test from './components/test'
 
 
 function App() {
@@ -40,7 +39,6 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/recipes' render={RecipesComponent} />
         <Route exact path="/recipes/:id" component={Recipe} />
-        <Route exact path="/test" component={test} />
       </Switch>
     </Router>
 
