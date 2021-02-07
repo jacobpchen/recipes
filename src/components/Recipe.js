@@ -11,12 +11,12 @@ function Recipe() {
     let { id } = useParams()
     console.log(id)
     console.log(`https://cooking-with-chef-phil.herokuapp.com/recipes/${id}`)
-    
-    const [title, setTitle] = useState()
-    const [image, setImage] = useState()
-    const [ingredients, setIngredients] = useState()
-    const [instructions, setInstructions] = useState()
-    const [createdAt, setCreatedAt] = useState()
+
+    const [title, setTitle] = useState('')
+    const [image, setImage] = useState('')
+    const [ingredients, setIngredients] = useState('')
+    const [instructions, setInstructions] = useState('')
+    const [createdAt, setCreatedAt] = useState('')
 
     useEffect(() => {
         const fetchData = async () => {

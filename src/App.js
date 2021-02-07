@@ -17,7 +17,6 @@ function App() {
     const fetchData = async () => {
       const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/recipes/`)
       setRecipes(response.data)
-      console.log("Printing from test")
       console.log(recipes)
     }
     fetchData()

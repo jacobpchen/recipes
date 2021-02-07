@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../dark-mode/theme'
@@ -7,6 +8,7 @@ import { GlobalStyles } from '../dark-mode/global'
 function Nav() {
 
     const [theme, setTheme] = useState('light')
+    const [categories, setCategories] = useState([])
 
     const toggleTheme = () => {
         if (theme === 'light') {
@@ -15,6 +17,16 @@ function Nav() {
             setTheme('light')
         }
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/categories/`)
+            console.log(response.data)
+            setCategories(response.data)
+        }
+        console.log(categories)
+        fetchData()
+    }, [])
 
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -34,6 +46,18 @@ function Nav() {
                             <li>
                                 <Link to="/recipes">Recipes</Link>
                             </li>
+
+                            {categories.map((category, i) => {
+                                return (
+                                    <li key={category.id}>
+                                        <Link
+                                            to={`/categories/${category.id}`}
+                                            className="uk-link-reset">
+                                            {category.name}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                             <li><a href="#" onClick={toggleTheme}>{theme} Mode</a></li>
                         </ul>
                     </div>
