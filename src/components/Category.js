@@ -23,14 +23,18 @@ const Category = () => {
             console.log(recipes)
         }
         fetchData()
-    })
+    }, [])
 
     return (
         <div>
             <div className="uk-section">
+
                 <div className="uk-container uk-container-large">
-                    <Pheading>{name}</Pheading>
-                    <Recipes recipes={recipes} />
+
+                    <Recipes
+                        recipes={recipes}
+                        name={name}
+                    />
                 </div>
             </div>
         </div>

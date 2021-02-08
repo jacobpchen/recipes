@@ -12,14 +12,14 @@ class Recipes extends React.Component {
 
     render() {
         console.log("Inside Recipes")
-        console.log(this.props.recipes)
+        console.log(this.props)
         const leftRecipeCount = Math.ceil(this.props.recipes.length / 4);
         const leftRecipe = this.props.recipes.slice(0, leftRecipeCount);
         const rightRecipe = this.props.recipes.slice(leftRecipeCount, this.props.recipes.length);
 
         return (
             <div className="uk-container">
-                <Pheading>Recipes</Pheading>
+                <Pheading>{this.props.name}</Pheading>
                 <div className="uk-child-width-1-2" data-uk-grid>
                     <div>
                         {leftRecipe.map((recipe, i) => {

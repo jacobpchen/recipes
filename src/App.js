@@ -17,6 +17,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/recipes/`)
+      console.log(response)
       setRecipes(response.data)
       console.log(recipes)
     }
@@ -27,6 +28,7 @@ function App() {
   (
     <Recipes
       recipes={recipes}
+      name="Recipes"
     />
   )
 
