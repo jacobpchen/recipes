@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 const Recipe = ({ recipes, name }) => {
     console.log("INSIDE RECIPES")
+    console.log(recipes)
+
     const leftRecipeCount = Math.ceil(recipes.length / 4);
     const leftRecipe = recipes.slice(0, leftRecipeCount);
     const rightRecipe = recipes.slice(leftRecipeCount, recipes.length);

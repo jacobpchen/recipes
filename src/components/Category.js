@@ -15,15 +15,21 @@ const Category = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        const fetchData = async () => {
+        let mounted = true
+
+        const loadData = async () => {
             const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/categories/${id}`)
-            setName(response.data.name)
-            console.log(name)
-            setRecipes(response.data.recipes)
-            console.log(recipes)
+            if (mounted) {
+                setRecipes(response.data.recipes)
+                setName(response.data.name)
+            }
         }
-        fetchData()
-    }, [])
+        loadData()
+
+        return () => {
+            mounted = false
+        }
+    }, [id])
 
     return (
         <div>

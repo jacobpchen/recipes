@@ -18,15 +18,32 @@ function Nav() {
         }
     }
 
-    useEffect(() => {
+    /*
+    const fetchAPI = async () => {
         const fetchData = async () => {
             const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/categories/`)
-            console.log(response.data)
             setCategories(response.data)
         }
         console.log(categories)
         fetchData()
-    }, [])
+    }
+    */
+    useEffect(() => {
+        let mounted = true;
+        const loadData = async () => {
+            const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/categories/`)
+
+            if (mounted) {
+                setCategories(response.data)
+            }
+        }
+        loadData()
+
+        return () => {
+            mounted = false
+        }
+
+    }, [categories])
 
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -44,7 +61,7 @@ function Nav() {
                     <div className="uk-navbar-right">
                         <ul className="uk-navbar-nav">
                             <li>
-                                <Link to="/recipes">Recipes</Link>
+                                <Link to="/">Recipes</Link>
                             </li>
 
                             {categories.map((category, i) => {
