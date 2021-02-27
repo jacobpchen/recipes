@@ -19,7 +19,7 @@ const Card = ({ recipe }) => {
                         <p id="category" className="uk-text-uppercase uk-text-large">
                             {recipe.title}
                         </p>
-                        {recipe.views}
+                        {/* {recipe.views} */}
                     </div>
                 </div>
             </Link>
