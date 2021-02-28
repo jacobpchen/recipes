@@ -18,6 +18,7 @@ function App() {
   const [leftRecipe, setLeftRecipe] = useState([])
   const [rightRecipe, setRightRecipe] = useState([])
 
+  
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/recipes/`)
@@ -27,6 +28,7 @@ function App() {
     }
     fetchData()
   }, [])
+  
 
   const RecipesComponent = () =>
   (
