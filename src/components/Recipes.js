@@ -3,6 +3,7 @@ import Card from './Card'
 import styled from 'styled-components'
 
 const Recipe = ({ recipes, name }) => {
+    console.log("INSIDE RECIPES")
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
 

@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
 
 import Recipes from './components/Recipes'
-import Home from './components/Home'
 import Nav from './components/Nav'
 import Recipe from './components/Recipe'
 import Category from './components/Category'
-
+import './index.css'
 
 function App() {
 
   const [isLoading, setLoading] = useState(true)
   const [recipes, setRecipes] = useState()
-  const [leftRecipeCount, setLeftRecipeCount] = useState(0)
-  const [leftRecipe, setLeftRecipe] = useState([])
-  const [rightRecipe, setRightRecipe] = useState([])
 
-  
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(`https://cooking-with-chef-phil.herokuapp.com/recipes/`)
@@ -28,7 +22,6 @@ function App() {
     }
     fetchData()
   }, [])
-  
 
   const RecipesComponent = () =>
   (
@@ -45,36 +38,20 @@ function App() {
     />
   )
 
-  if (isLoading) {
-    return (<div>Loading...</div>)
-  }
-  else {
-    return (
-      <Router>
-        <Nav />
-        <Switch>
-          <Route exact path='/' render={RecipesComponent} />
-          <Route exact path='/recipes' render={RecipesComponent} />
-          <Route exact path="/recipes/:id" component={Recipe} />
-          <Route path="/categories/:id" render={CategoriesComponent} exact />
-        </Switch>
-      </Router>
-    )
-  }
-
-  /*   return (
-      <Router>
-        <Nav />
-        <Switch>
-          <Route exact path='/' render={isLoading ? (<div>Loading...</div>) : RecipesComponent} />
-          <Route exact path='/recipes' render={RecipesComponent} />
-          <Route exact path="/recipes/:id" component={Recipe} />
-          <Route path="/categories/:id" render={CategoriesComponent} exact />
-        </Switch>
-      </Router>
-  
-    ) */
-
+  return isLoading ? (
+    <div className="height-100 uk-flex uk-flex-center uk-flex-middle">
+      <div uk-spinner="ratio: 3"></div>
+    </div>
+  ) :
+    <Router>
+      <Nav />
+      <Switch>
+        <Route exact path='/' render={RecipesComponent} />
+        <Route exact path='/recipes' render={RecipesComponent} />
+        <Route exact path="/recipes/:id" component={Recipe} />
+        <Route path="/categories/:id" render={CategoriesComponent} exact />
+      </Switch>
+    </Router>
 }
 
 export default App

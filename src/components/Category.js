@@ -6,11 +6,6 @@ import Recipes from './Recipes'
 
 const Category = () => {
     let { id } = useParams()
-
-    console.log("Inside Category")
-    console.log(id)
-    console.log(`https://cooking-with-chef-phil.herokuapp.com/categories/${id}`)
-
     const [name, setName] = useState('')
     const [recipes, setRecipes] = useState([])
 
@@ -34,9 +29,7 @@ const Category = () => {
     return (
         <div>
             <div className="uk-section">
-
                 <div className="uk-container uk-container-large">
-
                     <Recipes
                         recipes={recipes}
                         name={name}

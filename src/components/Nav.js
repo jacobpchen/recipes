@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../dark-mode/theme'
 import { GlobalStyles } from '../dark-mode/global'
-import Recipe from './Recipes';
+import Recipes from './Recipes'
 
 function Nav() {
 
@@ -17,6 +17,7 @@ function Nav() {
     const handleChange = event => {
         setSearchTerm(event.target.value);
         console.log(searchTerm)
+
     };
 
     const toggleTheme = () => {
@@ -52,7 +53,7 @@ function Nav() {
         const results = recipes.filter(res => res.title.toLowerCase().includes(searchTerm)
         )
         setSearchResults(results)
-        console.log(results)
+        console.log(searchResults)
     }, [searchTerm])
 
     return (
@@ -77,15 +78,16 @@ function Nav() {
                                     </li>
                                 );
                             })}
+
                             <li><a href="#" onClick={toggleTheme}>{theme} Mode</a></li>
                         </ul>
                     </div>
 
-                    <div className="uk-navbar-right">
+                    {/* <div className="uk-navbar-right">
                         <ul className="uk-navbar-nav">
-                            <form class="uk-search uk-search-navbar">
-                                <span uk-search-icon></span>
-                                <input class="uk-search-input"
+                            <form className="uk-search uk-search-navbar">
+                                <span uk-search-icon="true"></span>
+                                <input className="uk-search-input"
                                     type="search"
                                     placeholder="Search"
                                     onChange={handleChange}
@@ -93,7 +95,7 @@ function Nav() {
                                 </input>
                             </form>
                         </ul>
-                    </div>
+                    </div> */}
                 </nav>
             </div>
         </ThemeProvider>

@@ -6,12 +6,7 @@ import ReactMarkdown from "react-markdown";
 import axios from "axios";
 
 function Recipe() {
-
-    console.log("Inside Recipe.js")
     let { id } = useParams()
-    console.log(id)
-    console.log(`https://cooking-with-chef-phil.herokuapp.com/recipes/${id}`)
-
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
     const [ingredients, setIngredients] = useState('')
