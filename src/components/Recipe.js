@@ -48,6 +48,8 @@ function Recipe() {
                     </p>
                 </div>
             </div>
+
+            <div className></div>
         </div>
     )
 }
